@@ -29,7 +29,7 @@ public class ProductView extends View{
         this.backOrderButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                controllerCall = new ControllerCall(OrderDetailsController.class, ((ProductViewModel)viewModel).orderId);
+                controllerCall = new ControllerCall(OrderDetailsController.class, ((ProductViewModel)viewModel).customerId);
             }
         });
 

@@ -6,5 +6,6 @@ public class OrderDetailsViewModel {
 
     public OrderDetailsViewModel(String[][] details, String customerId) {
         this.details = details;
+        this.customerId = customerId;
     }
 }
