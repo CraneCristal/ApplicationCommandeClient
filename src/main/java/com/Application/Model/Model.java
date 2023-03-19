@@ -100,7 +100,7 @@ public class Model {
  // Product fix
     public Product getProduct(String productId) {
         String url = "jdbc:h2:./h2database";
-        Product product = null;
+        Product product = new Product("null","null","null","null","null");
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement stmt = conn.prepareStatement(
                      "SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WHERE ID = ?")) {
