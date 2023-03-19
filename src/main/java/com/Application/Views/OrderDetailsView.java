@@ -1,17 +1,16 @@
 package com.Application.Views;
 
 import com.Application.Controllers.MainController;
-import com.Application.ViewModels.MainViewModel;
-import com.Application.ViewModels.OrderDetailViewModel;
+import com.Application.ViewModels.OrderDetailsViewModel;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.*;
 
-public class OrderDetailView extends View{
+public class OrderDetailsView extends View{
     private Table orderDetailTable;
     private Button customerListButton;
-    public OrderDetailView(Shell shell, Object viewModel) {
+    public OrderDetailsView(Shell shell, Object viewModel) {
         super(shell, viewModel);
     }
 
@@ -50,7 +49,7 @@ public class OrderDetailView extends View{
     public void update() {
         if(!this.orderDetailTable.isDisposed()) {
             this.orderDetailTable.removeAll();
-            for (String[] line : ((OrderDetailViewModel)this.viewModel).details) {
+            for (String[] line : ((OrderDetailsViewModel)this.viewModel).details) {
                 TableItem item = new TableItem(this.orderDetailTable, SWT.NONE);
                 item.setText(line);
             }

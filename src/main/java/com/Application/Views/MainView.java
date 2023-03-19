@@ -2,7 +2,7 @@ package com.Application.Views;
 
 import com.Application.Controllers.CustomerEditController;
 import com.Application.Controllers.MainController;
-import com.Application.Controllers.OrderDetailController;
+import com.Application.Controllers.OrderDetailsController;
 import com.Application.ViewModels.MainViewModel;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -79,7 +79,7 @@ public class MainView extends View {
                 if(!(ordersTable.getSelection().length == 0)) {
                     TableItem selectedItem = ordersTable.getSelection()[0];
                     // On appel un controlleur avec comme arguent l'id de la commande
-                    controllerCall = new ControllerCall(OrderDetailController.class, selectedItem.getText(0));
+                    controllerCall = new ControllerCall(OrderDetailsController.class, selectedItem.getText(0));
                 }
             }
         });

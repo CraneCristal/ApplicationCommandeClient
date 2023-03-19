@@ -1,9 +1,9 @@
 package com.Application.ViewModels;
 
-public class OrderDetailViewModel {
+public class OrderDetailsViewModel {
     public String[][] details;
 
-    public OrderDetailViewModel(String[][] details) {
+    public OrderDetailsViewModel(String[][] details) {
         this.details = details;
     }
 }

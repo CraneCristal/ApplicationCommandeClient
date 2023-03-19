@@ -56,9 +56,9 @@ public class Model {
     }
 
     //Retourne tous les details concernant une commande
-    public OrderDetail[] getOrderDetail(String orderId, String... args) {
+    public OrderDetails[] getOrderDetail(String orderId, String... args) {
         String url = "jdbc:h2:./h2database";
-        List<OrderDetail> OrderDetailList = new ArrayList<>();
+        List<OrderDetails> orderDetailsList = new ArrayList<>();
         try {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
@@ -68,8 +68,8 @@ public class Model {
 
             // Itération sur les résultats de la requête et création d'un objet OrderDetail pour chaque client
             while (rs.next()) {
-                OrderDetail orderDetail = new OrderDetail(rs.getString("ProductID"),rs.getString("Quantity"),rs.getString("UnitPrice"),rs.getString("Discount"));
-                OrderDetailList.add(orderDetail);
+                OrderDetails orderDetails = new OrderDetails(rs.getString("ProductID"),rs.getString("Quantity"),rs.getString("UnitPrice"),rs.getString("Discount"));
+                orderDetailsList.add(orderDetails);
             }
             rs.close();
             stmt.close();
@@ -78,7 +78,7 @@ public class Model {
             throw new RuntimeException(e);
         }
 
-        return OrderDetailList.toArray(OrderDetail[]::new) ;
+        return orderDetailsList.toArray(OrderDetails[]::new) ;
     }
 
     //Etablie la connection avec la base de données H2 et notre programme
@@ -171,5 +171,9 @@ public class Model {
 
     public Customer getCustomer(String customerId) {
         return new Customer("1234", "Nathan", "Delobel");
+    }
+
+    public Product getProduct(String productId) {
+        return new Product("12", "tamere", "0€", "1", "rien");
     }
 }
