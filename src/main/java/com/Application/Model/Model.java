@@ -19,23 +19,40 @@ public class Model {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
 
-            String requete="SELECT ID, LASTNAME, FIRSTNAME FROM Customers";
+            String requete = "SELECT ID, LASTNAME, FIRSTNAME FROM Customers";
             ResultSet rs = stmt.executeQuery(requete);
 
             // Itération sur les résultats de la requête et création d'un objet Customers pour chaque client
             while (rs.next()) {
-                Customer customer = new Customer(rs.getString("ID"),rs.getString("FIRSTNAME"),rs.getString("LASTNAME"));
+                Customer customer = new Customer(rs.getString("ID"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"));
                 customersList.add(customer);
             }
-            rs.close();
-            stmt.close();
-            conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return customersList.toArray(Customer[]::new) ;
+        return customersList.toArray(Customer[]::new);
     }
+
+    public Customer getCustomer(String customerId) {
+        String url = "jdbc:h2:./h2database";
+        Customer customer = null;
+        try {
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+
+            String requete = "SELECT ID, FirstName, LastName FROM Customers WHERE ID=" + customerId;
+            ResultSet rs = stmt.executeQuery(requete);
+            if (rs.next()) {
+                customer = new Customer(rs.getString("ID"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return customer;
+    }
+
 
     // Retour de la liste des commandes pour un client
     public Order[] getCustomerOrders(String customerId) {
@@ -43,7 +60,7 @@ public class Model {
         List<Order> OrderList = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT o.OrderID, o.OrderDate, o.CustomerID, SUM(CAST(REPLACE(od.UnitPrice, ',', '.') AS DECIMAL(10, 2)) * CAST(od.Quantity AS DECIMAL(10, 2)) * (100 - CAST(REPLACE(od.Discount, ',', '.') AS DECIMAL(10, 2))) / 100) AS TotalPrice FROM Orders o JOIN OrderDetails od ON o.OrderID = od.OrderID WHERE o.CustomerID="+customerId+" GROUP BY o.OrderID"); ){
+             ResultSet rs = stmt.executeQuery("SELECT o.OrderID, o.OrderDate, o.CustomerID, SUM(CAST(REPLACE(od.UnitPrice, ',', '.') AS DECIMAL(10, 2)) * CAST(od.Quantity AS DECIMAL(10, 2)) * (100 - CAST(REPLACE(od.Discount, ',', '.') AS DECIMAL(10, 2))) / 100) AS TotalPrice FROM Orders o JOIN OrderDetails od ON o.OrderID = od.OrderID WHERE o.CustomerID=" + customerId + " GROUP BY o.OrderID");) {
             // Itération sur les résultats de la requête et création d'un objet Order pour chaque client
             while (rs.next()) {
                 Order order = new Order(rs.getString("OrderID"), rs.getString("OrderDate"), rs.getString("CustomerID"), rs.getString("TotalPrice"));
@@ -63,12 +80,12 @@ public class Model {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
 
-            String requete="SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails";
+            String requete = "SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=" + orderId;
             ResultSet rs = stmt.executeQuery(requete);
 
             // Itération sur les résultats de la requête et création d'un objet OrderDetail pour chaque client
             while (rs.next()) {
-                OrderDetails orderDetails = new OrderDetails(rs.getString("ProductID"),rs.getString("Quantity"),rs.getString("UnitPrice"),rs.getString("Discount"));
+                OrderDetails orderDetails = new OrderDetails(rs.getString("ProductID"), rs.getString("Quantity"), rs.getString("UnitPrice"), rs.getString("Discount"));
                 orderDetailsList.add(orderDetails);
             }
             rs.close();
@@ -78,11 +95,31 @@ public class Model {
             throw new RuntimeException(e);
         }
 
-        return orderDetailsList.toArray(OrderDetails[]::new) ;
+        return orderDetailsList.toArray(OrderDetails[]::new);
+    }
+
+    public Product getProduct(String productId) {
+
+        String url = "jdbc:h2:./h2database";
+        Product product = null;
+        try {
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+
+            String requete = "SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WHERE ID=" + productId;
+            ResultSet rs = stmt.executeQuery(requete);
+            if (rs.next()) {
+                product = new Product(rs.getString("ID"), rs.getString("ProductName"), rs.getString("StandardCost"), rs.getString("QuantityPerUnit"), rs.getString("Category"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return product;
     }
 
     //Etablie la connection avec la base de données H2 et notre programme
-    private static void Connection(){
+    private static void Connection() {
         String[] filepaths = {
                 "Customers.csv",
                 "Employees.csv",
@@ -112,8 +149,16 @@ public class Model {
 
                 String tableName = getTableName(filepath);
 
+                ResultSet resultSet = conn.getMetaData().getTables(null, null, tableName.toUpperCase(), null);
+                boolean tableExists = resultSet.next();
+
+                if (tableExists) {
+                    stmt.execute("DROP TABLE IF EXISTS " + tableName);
+                }
+
                 String createTableSql = "CREATE TABLE " + tableName + " (" + getColumnsStatement(columnNames, columnTypes) + ")";
                 stmt.execute(createTableSql);
+
                 String line;
 
                 while ((line = reader.readLine()) != null) {
@@ -136,7 +181,7 @@ public class Model {
             throw new RuntimeException(e);
         }
     }
-
+    
     // Méthode pour obtenir le nom de la table à partir du chemin d'accès du fichier CSV
     private static String getTableName(String filepath) {
         int startIndex = filepath.lastIndexOf("/") + 1;
@@ -156,24 +201,7 @@ public class Model {
                 }
             }
         }
-        if (columnNames != null && columnTypes == null) {
-            // Si seuls des noms de colonnes ont été fournis, les ajouter à la chaîne de caractères
-            for (int i = 0; i < columnNames.length; i++) {
-                sb.append(columnNames[i].replaceAll("[^a-zA-Z0-9]", ""));
-                if (i < columnNames.length - 1) {
-                    sb.append(", ");
-                }
-            }
-        }
         // Retourne la chaîne de caractères résultante
         return sb.toString();
-    }
-
-    public Customer getCustomer(String customerId) {
-        return new Customer("1234", "Nathan", "Delobel");
-    }
-
-    public Product getProduct(String productId) {
-        return new Product("12", "tamere", "0€", "1", "rien");
     }
 }
