@@ -31,6 +31,7 @@ public class Main {
         this.model = new Model();
 
         while (!this.shell.isDisposed()) {
+            ControllerCall previousCall = new ControllerCall();
             // Lorsqu'on ouvre l'application on appel le MainController pour avoir la MainView
             if(this.actualView == null) {
                 this.actualView = runController(new ControllerCall(MainController.class, 0));
@@ -49,6 +50,8 @@ public class Main {
                     this.actualView = newView;
                     this.actualView.show();
                 }
+                // Apres avoir traité l'appel on le supprime
+                this.actualView.controllerCall = null;
             }
         }
     }
