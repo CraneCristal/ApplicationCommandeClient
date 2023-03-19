@@ -168,4 +168,8 @@ public class Model {
         // Retourne la chaîne de caractères résultante
         return sb.toString();
     }
+
+    public Customer getCustomer(String customerId) {
+        return new Customer("1234", "Nathan", "Delobel");
+    }
 }

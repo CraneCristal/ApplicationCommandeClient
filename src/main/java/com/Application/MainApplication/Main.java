@@ -37,8 +37,10 @@ public class Main {
                 this.actualView = runController(new ControllerCall(MainController.class, 0));
                 this.actualView.show();
             }
-            if(!display.readAndDispatch())
+            // Si rien ne passe sur la fenetre on ne fait rien
+            if(!display.readAndDispatch()) {
                 display.sleep();
+            }
             else if(this.actualView.controllerCall != null){
                 // Si la nouvelle vue est du meme type que l'ancienne, on midifie juste le viewModel associé
                 View newView = runController(this.actualView.controllerCall);
