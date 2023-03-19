@@ -1,6 +1,7 @@
 package com.Application.Views;
 
 import com.Application.Controllers.MainController;
+import com.Application.Controllers.OrderDetailsController;
 import com.Application.Controllers.ProductController;
 import com.Application.ViewModels.OrderDetailsViewModel;
 import org.eclipse.swt.SWT;
@@ -26,7 +27,7 @@ public class OrderDetailsView extends View{
 
         this.orderDetailTable = new Table(this.shell, SWT.BORDER | SWT.READ_ONLY);
         this.orderDetailTable.setHeaderVisible(true);
-        String[] columnTitles = new String[]{"Produit", "Quantité", "Prix Unitaire", "Reduction"};
+        String[] columnTitles = new String[]{"Produit", "Quantité", "Prix Unitaire", "Réduction"};
         for (String title : columnTitles) {
             TableColumn column = new TableColumn(this.orderDetailTable, SWT.NONE);
             column.setText(title);
@@ -37,6 +38,33 @@ public class OrderDetailsView extends View{
         }
         this.orderDetailTable.setBounds(25, 25, 725, 450);
         this.update();
+
+        this.orderDetailTable.getColumn(0).addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                controllerCall = new ControllerCall(OrderDetailsController.class, ((OrderDetailsViewModel)viewModel).customerId, "Produit");
+            }
+        });
+        this.orderDetailTable.getColumn(1).addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                controllerCall = new ControllerCall(OrderDetailsController.class, ((OrderDetailsViewModel)viewModel).customerId, "Quantité");
+            }
+        });
+        this.orderDetailTable.getColumn(2).addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                controllerCall = new ControllerCall(OrderDetailsController.class, ((OrderDetailsViewModel)viewModel).customerId, "Prix Unitaire");
+            }
+        });
+
+        this.orderDetailTable.getColumn(3).addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                controllerCall = new ControllerCall(OrderDetailsController.class, ((OrderDetailsViewModel)viewModel).customerId, "Reduction");
+            }
+        });
+
 
         this.customerListButton = new Button(this.shell, SWT.PUSH);
         this.customerListButton.setBounds(600, 490, 150,30);
