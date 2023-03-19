@@ -16,6 +16,7 @@ public class OrderDetailView extends View{
     }
 
     public void show() {
+        this.shell.setSize(800, 600);
         // Nettoyage de la fenêtre avant de recréer l'affichage
         for (Control control : this.shell.getChildren()) {
             control.dispose();

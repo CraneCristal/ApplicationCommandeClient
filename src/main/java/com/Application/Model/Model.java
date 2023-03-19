@@ -32,4 +32,12 @@ public class Model {
         else
             return new OrderDetail[] {new OrderDetail("243", "10", "1€", "70%"), new OrderDetail("24", "55", "5€", "2%")};
     }
+
+    public Customer getCustomer(String idCustomer) {
+        if(idCustomer.equals("Nathan DELOBEL")) {
+            return new Customer("1254", "Nathan", "DELOBEL");
+        }
+        else
+            return new Customer(idCustomer, "Antoine", "JOLY");
+    }
 }

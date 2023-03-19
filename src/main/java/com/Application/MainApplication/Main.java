@@ -7,6 +7,10 @@ import com.Application.Views.*;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 
 public class Main {
@@ -14,9 +18,7 @@ public class Main {
     private Shell shell;
     private View actualView;
 
-    public static void main(String[] args) {
-        new Main().run();
-    }
+    public static void main(String[] args) {new Main().run();}
 
     public void run() {
         // Mise en place de la fenetre

@@ -1,5 +1,6 @@
 package com.Application.Views;
 
+import com.Application.Controllers.CustomerEditController;
 import com.Application.Controllers.MainController;
 import com.Application.Controllers.OrderDetailController;
 import com.Application.ViewModels.MainViewModel;
@@ -20,6 +21,7 @@ public class MainView extends View {
     }
 
     public void show() {
+        this.shell.setSize(800, 600);
         // Nettoyage de la fenêtre avant de recréer l'affichage
         for (Control control : this.shell.getChildren()) {
             control.dispose();
@@ -60,6 +62,12 @@ public class MainView extends View {
         this.editButton = new Button(this.shell, SWT.PUSH);
         this.editButton.setText("Editer");
         this.editButton.setBounds(550, 25, 100, 30);
+        this.editButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                controllerCall = new ControllerCall(CustomerEditController.class, combo_customers.getText());
+            }
+        });
 
         // Bouton d'acces au detail de la commande
         this.orderDetailButton = new Button(this.shell, SWT.PUSH);
