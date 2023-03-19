@@ -79,8 +79,19 @@ public class Model {
         try {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
-
             String requete = "SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=" + orderId;
+            if (args.length!=0) {
+                switch (args[0]) {
+                    case "Produit":
+                        requete += " ORDER BY ProductID";
+                    case "Quantité":
+                        requete += " ORDER BY Quantity";
+                    case "Prix Unitaire":
+                        requete += " ORDER BY UnitPrice";
+                    case "Réduction":
+                        requete += " ORDER BY Discount";
+                }
+            }
             ResultSet rs = stmt.executeQuery(requete);
 
             // Itération sur les résultats de la requête et création d'un objet OrderDetail pour chaque client
@@ -163,13 +174,19 @@ public class Model {
                 while ((line = reader.readLine()) != null) {
 
                     String[] values = line.split(";");
-
                     String[] sqlValues = new String[columnNames.length];
-                    for (int i = 0; i < columnNames.length; i++) {
 
-                        String value = (i < values.length && !values[i].isEmpty()) ? values[i].trim() : "VIDE";
-                        sqlValues[i] = "'" + value + "'";
+                    for (int i = 0; i < columnNames.length; i++) {
+                        String value = "";
+                        if (i < values.length && !values[i].isEmpty()) {
+                            // Supprimer les guillemets simples et doubles
+                            value = values[i].replaceAll("[\"']", "");
+                            sqlValues[i] = "'" + value + "'";
+                        } else {
+                            sqlValues[i] = "'VIDE'";
+                        }
                     }
+
                     stmt.execute("INSERT INTO " + tableName + " VALUES (" + String.join(",", sqlValues) + ")");
                 }
                 reader.close();
@@ -180,7 +197,8 @@ public class Model {
             throw new RuntimeException(e);
         }
     }
-    
+
+
     // Méthode pour obtenir le nom de la table à partir du chemin d'accès du fichier CSV
     private static String getTableName(String filepath) {
         int startIndex = filepath.lastIndexOf("/") + 1;
