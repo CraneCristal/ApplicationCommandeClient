@@ -22,3 +22,11 @@ SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WH
 org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "6"""
 Data conversion error converting "6"""; SQL statement:
 SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WHERE ID=43 [22018-200]
+2023-03-20 00:25:00 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "SELECT PRODUCTID, QUANTITY, UNITPRICE, DISCOUNT FROM ORDERDETAILS WHERE ORDERID=44 ORDER BY PRODUCTID ORDER[*] BY QUANTITY ORDER BY UNITPRICE ORDER BY DISCOUNT"
+Syntax error in SQL statement "SELECT PRODUCTID, QUANTITY, UNITPRICE, DISCOUNT FROM ORDERDETAILS WHERE ORDERID=44 ORDER BY PRODUCTID ORDER[*] BY QUANTITY ORDER BY UNITPRICE ORDER BY DISCOUNT"; SQL statement:
+SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=44 ORDER BY ProductID ORDER BY Quantity ORDER BY UnitPrice ORDER BY Discount [42000-200]
+2023-03-20 00:28:29 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "SELECT PRODUCTID, QUANTITY, UNITPRICE, DISCOUNT FROM ORDERDETAILS WHERE ORDERID=44 ORDER BY PRODUCTID ORDER[*] BY QUANTITY ORDER BY UNITPRICE ORDER BY DISCOUNT"
+Syntax error in SQL statement "SELECT PRODUCTID, QUANTITY, UNITPRICE, DISCOUNT FROM ORDERDETAILS WHERE ORDERID=44 ORDER BY PRODUCTID ORDER[*] BY QUANTITY ORDER BY UNITPRICE ORDER BY DISCOUNT"; SQL statement:
+SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=44 ORDER BY ProductID ORDER BY Quantity ORDER BY UnitPrice ORDER BY Discount [42000-200]

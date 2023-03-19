@@ -84,12 +84,16 @@ public class Model {
                 switch (args[0]) {
                     case "Produit":
                         requete += " ORDER BY ProductID";
+                        break;
                     case "Quantité":
                         requete += " ORDER BY Quantity";
+                        break;
                     case "Prix Unitaire":
                         requete += " ORDER BY UnitPrice";
+                        break;
                     case "Réduction":
                         requete += " ORDER BY Discount";
+                        break;
                 }
             }
             ResultSet rs = stmt.executeQuery(requete);
