@@ -12,7 +12,7 @@ public class ProductController extends Controller{
 
     public ControllerResult run(Object... args) {
         Product product = this.model.getProduct((String) args[0]);
-        ProductViewModel viewModel = new ProductViewModel(product.prductId, product.productName, product.category, product.standardCost, product.quantityPerUnit, (String) args[1]);
+        ProductViewModel viewModel = new ProductViewModel(product.productId, product.productName, product.category, product.standardCost, product.quantityPerUnit, (String) args[1]);
         return new ControllerResult("ProductView", viewModel);
     }
 }

@@ -1,0 +1,8 @@
+2023-03-19 23:13:58 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "6"""
+Data conversion error converting "6"""; SQL statement:
+SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WHERE ID=43 [22018-200]
+2023-03-19 23:15:09 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "6"""
+Data conversion error converting "6"""; SQL statement:
+SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WHERE ID=43 [22018-200]
