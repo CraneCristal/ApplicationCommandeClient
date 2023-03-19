@@ -26,7 +26,7 @@ public class MainController extends Controller{
         }
 
         // Creation de la liste des information des commandes du client à afficher
-        Order[] ordersCustomer = this.model.getCustomerOrders(customers[customerPos]);
+        Order[] ordersCustomer = this.model.getCustomerOrders(customers[customerPos].id);
         String[][] stringsOrdersCustomer = new String[ordersCustomer.length][];
         for(int i = 0; i<ordersCustomer.length; i++) {
             stringsOrdersCustomer[i] = new String[]{ordersCustomer[i].id, ordersCustomer[i].date, ordersCustomer[i].customer_id, ordersCustomer[i].fullPrice};

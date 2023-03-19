@@ -11,10 +11,10 @@ public class Model {
     }
 
     // Retour de la liste des commandes pour un client
-    public Order[] getCustomerOrders(Customer customer) {
+    public Order[] getCustomerOrders(String customerId) {
         Order order1;
         Order order2;
-        if(customer.first_name.equals("Nathan") && customer.last_name.equals("DELOBEL") && customer.id.equals("1254")) {
+        if(customerId.equals("1254")) {
             order1 = new Order("161", "12/01/2016", "1254", "67€");
             order2 = new Order("191", "12/01/2019", "1254", "27€");
         }
