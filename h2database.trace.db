@@ -1,4 +1,4 @@
-2023-03-19 22:08:13 jdbc[5]: null
+2023-03-19 23:06:58 jdbc[5]: null
 org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
 The connection was not closed by the application and is garbage collected [90018-200]
 	at org.h2.message.DbException.get(DbException.java:205)

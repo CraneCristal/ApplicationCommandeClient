@@ -45,7 +45,7 @@ public class MainView extends View {
 
         // Liste deroulante des clients
         this.combo_customers = new Combo(this.shell, SWT.READ_ONLY);
-        this.combo_customers.setItems(((MainViewModel) this.viewModel).customersName);
+        this.combo_customers.setItems(((MainViewModel) this.viewModel).customersId);
         this.combo_customers.setBounds(25, 25, 500, 50);
         this.combo_customers.select(0);
         this.combo_customers.addSelectionListener(new SelectionAdapter() {

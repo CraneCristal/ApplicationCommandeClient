@@ -20,9 +20,9 @@ public class MainController extends Controller{
 
         // Creation de la liste des noms des clients
         Customer[] customers = this.model.getAllCustommers();
-        String[] customersNames = new String[customers.length];
+        String[] customersId = new String[customers.length];
         for(int i = 0; i<customers.length; i++) {
-            customersNames[i] = customers[i].first_name + " " + customers[i].last_name;
+            customersId[i] = customers[i].id;
         }
 
         // Creation de la liste des information des commandes du client à afficher
@@ -32,7 +32,7 @@ public class MainController extends Controller{
             stringsOrdersCustomer[i] = new String[]{ordersCustomer[i].id, ordersCustomer[i].date, ordersCustomer[i].customer_id, ordersCustomer[i].fullPrice};
         }
 
-        MainViewModel viewModel = new MainViewModel(customersNames, stringsOrdersCustomer);
+        MainViewModel viewModel = new MainViewModel(customersId, stringsOrdersCustomer);
         return new ControllerResult("MainView", viewModel);
     }
 }

@@ -1,6 +1,7 @@
 package com.Application.Views;
 
 import com.Application.Controllers.MainController;
+import com.Application.Controllers.ProductController;
 import com.Application.ViewModels.OrderDetailsViewModel;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -10,6 +11,8 @@ import org.eclipse.swt.widgets.*;
 public class OrderDetailsView extends View{
     private Table orderDetailTable;
     private Button customerListButton;
+
+    private Button productDetailButton;
     public OrderDetailsView(Shell shell, Object viewModel) {
         super(shell, viewModel);
     }
@@ -42,6 +45,19 @@ public class OrderDetailsView extends View{
             @Override
             public void widgetSelected(SelectionEvent e) {
                 controllerCall = new ControllerCall(MainController.class);
+            }
+        });
+
+        this.productDetailButton = new Button(this.shell, SWT.PUSH);
+        this.productDetailButton.setBounds(200, 490, 150,30);
+        this.productDetailButton.setText("Detail produit");
+        this.productDetailButton.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                if(orderDetailTable.getSelection().length != 0) {
+                    TableItem selectedItem = orderDetailTable.getSelection()[0];
+                    controllerCall = new ControllerCall(ProductController.class, selectedItem.getText(0), ((OrderDetailsViewModel)viewModel).customerId);
+                }
             }
         });
     }

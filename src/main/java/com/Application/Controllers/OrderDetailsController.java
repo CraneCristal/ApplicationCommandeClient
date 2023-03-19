@@ -15,7 +15,7 @@ public class OrderDetailsController extends Controller{
         for(int i = 0; i<orderDetails.length; i++) {
             stringOrderDetails[i] = new String[]{orderDetails[i].productId, orderDetails[i].quantity, orderDetails[i].unitPrice, orderDetails[i].discount};
         }
-        OrderDetailsViewModel viewModel = new OrderDetailsViewModel(stringOrderDetails);
+        OrderDetailsViewModel viewModel = new OrderDetailsViewModel(stringOrderDetails, (String)args[0]);
         return new ControllerResult("OrderDetailView", viewModel);
     }
 }
