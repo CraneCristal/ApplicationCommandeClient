@@ -97,26 +97,25 @@ public class Model {
 
         return orderDetailsList.toArray(OrderDetails[]::new);
     }
-
+ // Product fix
     public Product getProduct(String productId) {
-
         String url = "jdbc:h2:./h2database";
         Product product = null;
-        try {
-            Connection conn = DriverManager.getConnection(url);
-            Statement stmt = conn.createStatement();
-
-            String requete = "SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WHERE ID=" + productId;
-            ResultSet rs = stmt.executeQuery(requete);
-            if (rs.next()) {
-                product = new Product(rs.getString("ID"), rs.getString("ProductName"), rs.getString("StandardCost"), rs.getString("QuantityPerUnit"), rs.getString("Category"));
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WHERE ID = ?")) {
+            stmt.setString(1, productId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    product = new Product(rs.getString("ID"), rs.getString("ProductName"), rs.getString("StandardCost"), rs.getString("QuantityPerUnit"), rs.getString("Category"));
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return product;
     }
+
 
     //Etablie la connection avec la base de données H2 et notre programme
     private static void Connection() {
