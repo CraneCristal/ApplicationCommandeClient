@@ -1,6 +1,9 @@
 package com.Application.Model;
 
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
@@ -25,10 +28,12 @@ public class Model {
 
             // Itération sur les résultats de la requête et création d'un objet Customers pour chaque client
             while (rs.next()) {
-                Customer customer = new Customer(rs.getString("ID"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"));
+                Customer customer = new Customer(rs.getString("ID"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"),hashage(rs.getString("FIRSTNAME")+rs.getString("LASTNAME")));
                 customersList.add(customer);
             }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
 
@@ -38,16 +43,19 @@ public class Model {
     public Customer getCustomer(String customerId) {
         String url = "jdbc:h2:./h2database";
         Customer customer = null;
+
         try {
             Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
-
             String requete = "SELECT ID, FirstName, LastName FROM Customers WHERE ID=" + customerId;
             ResultSet rs = stmt.executeQuery(requete);
             if (rs.next()) {
-                customer = new Customer(rs.getString("ID"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"));
+                String nomPrenom=rs.getString("FIRSTNAME")+ rs.getString("LASTNAME");
+                customer = new Customer(rs.getString("ID"), rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), hashage(nomPrenom));
             }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
 
@@ -64,10 +72,10 @@ public class Model {
              ResultSet rs = stmt.executeQuery("SELECT o.OrderID, o.OrderDate, o.CustomerID, SUM(CAST(REPLACE(od.UnitPrice, ',', '.') AS DECIMAL(10, 2)) * CAST(od.Quantity AS DECIMAL(10, 2)) * (100 - CAST(REPLACE(od.Discount, ',', '.') AS DECIMAL(10, 2))) / 100) AS TotalPrice FROM Orders o JOIN OrderDetails od ON o.OrderID = od.OrderID WHERE o.CustomerID=" + customerId + " GROUP BY o.OrderID");) {
             // Itération sur les résultats de la requête et création d'un objet Order pour chaque client
             while (rs.next()) {
-                String total=rs.getString("TotalPrice");
-                BigDecimal bd=new BigDecimal(total);
-                bd=bd.setScale(2);
-                Order order = new Order(rs.getString("OrderID"), rs.getString("OrderDate"), rs.getString("CustomerID"), bd.toString()+"€");
+                String total = rs.getString("TotalPrice");
+                BigDecimal bd = new BigDecimal(total);
+                bd = bd.setScale(2);
+                Order order = new Order(rs.getString("OrderID"), rs.getString("OrderDate"), rs.getString("CustomerID"), bd.toString() + "€");
                 OrderList.add(order);
             }
         } catch (SQLException e) {
@@ -82,7 +90,7 @@ public class Model {
         List<OrderDetails> orderDetailsList = new ArrayList<>();
         try {
             Connection conn = DriverManager.getConnection(url);
-            String orderByClause="";
+            String orderByClause = "";
             if (args.length != 0) {
                 switch (args[0]) {
                     case "Produit":
@@ -119,7 +127,7 @@ public class Model {
     // Product fix
     public Product getProduct(String productId) {
         String url = "jdbc:h2:./h2database";
-        Product product = new Product("null","null","null","null","null");
+        Product product = new Product("null", "null", "null", "null", "null");
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement stmt = conn.prepareStatement(
                      "SELECT ID, ProductName, StandardCost, QuantityPerUnit, Category FROM Products WHERE ID = ?")) {
@@ -228,5 +236,17 @@ public class Model {
         }
         // Retourne la chaîne de caractères résultante
         return sb.toString();
+    }
+
+    public static String hashage(String aHacher) throws NoSuchAlgorithmException {
+        String str = aHacher;
+        MessageDigest msg = MessageDigest.getInstance("SHA-256");
+        byte[] hash = msg.digest(str.getBytes(StandardCharsets.UTF_8));
+        // convertir bytes en hexadécimal
+        StringBuilder s = new StringBuilder();
+        for (byte b : hash) {
+            s.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
+        }
+        return s.toString();
     }
 }
