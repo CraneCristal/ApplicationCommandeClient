@@ -1,5 +1,6 @@
 package com.Application.Model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
@@ -63,7 +64,10 @@ public class Model {
              ResultSet rs = stmt.executeQuery("SELECT o.OrderID, o.OrderDate, o.CustomerID, SUM(CAST(REPLACE(od.UnitPrice, ',', '.') AS DECIMAL(10, 2)) * CAST(od.Quantity AS DECIMAL(10, 2)) * (100 - CAST(REPLACE(od.Discount, ',', '.') AS DECIMAL(10, 2))) / 100) AS TotalPrice FROM Orders o JOIN OrderDetails od ON o.OrderID = od.OrderID WHERE o.CustomerID=" + customerId + " GROUP BY o.OrderID");) {
             // Itération sur les résultats de la requête et création d'un objet Order pour chaque client
             while (rs.next()) {
-                Order order = new Order(rs.getString("OrderID"), rs.getString("OrderDate"), rs.getString("CustomerID"), rs.getString("TotalPrice"));
+                String total=rs.getString("TotalPrice");
+                BigDecimal bd=new BigDecimal(total);
+                bd=bd.setScale(2);
+                Order order = new Order(rs.getString("OrderID"), rs.getString("OrderDate"), rs.getString("CustomerID"), bd.toString()+"€");
                 OrderList.add(order);
             }
         } catch (SQLException e) {
