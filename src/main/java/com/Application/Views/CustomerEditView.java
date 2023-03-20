@@ -15,6 +15,7 @@ import org.eclipse.swt.widgets.Label;
 public class CustomerEditView extends View{
     Text firstName;
     Text lastName;
+    Text hash;
     Button customerListButton;
 
     public CustomerEditView(Shell shell, Object viewModel) {
@@ -22,7 +23,7 @@ public class CustomerEditView extends View{
     }
 
     public void show() {
-        this.shell.setSize(500, 500);
+        this.shell.setSize(600, 500);
         // Nettoyage de la fenêtre avant de recréer l'affichage
         for (Control control : this.shell.getChildren()) {
             control.dispose();
@@ -37,10 +38,18 @@ public class CustomerEditView extends View{
 
         Label label2 = new Label(this.shell, SWT.NONE);
         label2.setText("Nom :");
-        label2.setBounds(100, 130, 100, 20);
+        label2.setBounds(100, 150, 100, 20);
         this.lastName = new Text(this.shell, SWT.CENTER);
         this.lastName.setText(((CustomerEditViewModel)this.viewModel).lastName);
-        this.lastName.setBounds(200, 130, 150, 20);
+        this.lastName.setBounds(200, 150, 150, 20);
+
+        Label label3 = new Label(this.shell, SWT.NONE);
+        label3.setText("Hash :");
+        label3.setBounds(100, 215, 100, 20);
+        this.hash = new Text(this.shell, SWT.CENTER);
+        this.hash.setText(((CustomerEditViewModel)this.viewModel).hash);
+        this.hash.setBounds(200, 215, 300, 20);
+
 
         this.customerListButton = new Button(this.shell, SWT.PUSH);
         this.customerListButton.setText("Liste des clients");

@@ -11,7 +11,7 @@ public class CustomerEditController extends Controller{
 
     public ControllerResult run(Object... args) {
         Customer customer = this.model.getCustomer((String) args[0]);
-        CustomerEditViewModel viewModel = new CustomerEditViewModel(customer.first_name, customer.last_name);
+        CustomerEditViewModel viewModel = new CustomerEditViewModel(customer.first_name, customer.last_name, customer.hash);
         return new ControllerResult("CustomerEditView", viewModel);
     }
 }
