@@ -30,3 +30,449 @@ SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "SELECT PRODUCTID, QUANTITY, UNITPRICE, DISCOUNT FROM ORDERDETAILS WHERE ORDERID=44 ORDER BY PRODUCTID ORDER[*] BY QUANTITY ORDER BY UNITPRICE ORDER BY DISCOUNT"
 Syntax error in SQL statement "SELECT PRODUCTID, QUANTITY, UNITPRICE, DISCOUNT FROM ORDERDETAILS WHERE ORDERID=44 ORDER BY PRODUCTID ORDER[*] BY QUANTITY ORDER BY UNITPRICE ORDER BY DISCOUNT"; SQL statement:
 SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=44 ORDER BY ProductID ORDER BY Quantity ORDER BY UnitPrice ORDER BY Discount [42000-200]
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 15:57:40 jdbc[36]: null
+org.h2.message.DbException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at com.Application.Model.Model.getOrderDetail(Model.java:80)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:17)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La connexion n'a pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2023-03-20 17:33:34 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "18,00"
+Data conversion error converting "18,00"; SQL statement:
+SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=? ORDER BY CAST(UnitPrice AS DECIMAL(10,2)) [22018-200]
+2023-03-20 17:34:33 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Colonne "OD.UNITPRICE" non trouvée
+Column "OD.UNITPRICE" not found; SQL statement:
+SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=? ORDER BY CAST(REPLACE(od.UnitPrice, ',', '.') AS DECIMAL(10, 2)) [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.function.Function.optimize(Function.java:2594)
+	at org.h2.expression.function.Function.optimize(Function.java:2594)
+	at org.h2.command.dml.Select.prepare(Select.java:1206)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at com.Application.Model.Model.getOrderDetail(Model.java:99)
+	at com.Application.Controllers.OrderDetailsController.run(OrderDetailsController.java:15)
+	at com.Application.MainApplication.Main.runController(Main.java:64)
+	at com.Application.MainApplication.Main.run(Main.java:46)
+	at com.Application.MainApplication.Main.main(Main.java:21)

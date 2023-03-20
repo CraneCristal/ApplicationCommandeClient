@@ -78,41 +78,41 @@ public class Model {
         List<OrderDetails> orderDetailsList = new ArrayList<>();
         try {
             Connection conn = DriverManager.getConnection(url);
-            Statement stmt = conn.createStatement();
-            String requete = "SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=" + orderId;
-            if (args.length!=0) {
+            String orderByClause="";
+            if (args.length != 0) {
                 switch (args[0]) {
                     case "Produit":
-                        requete += " ORDER BY ProductID";
+                        orderByClause = "ORDER BY ProductID";
                         break;
                     case "Quantité":
-                        requete += " ORDER BY Quantity";
+                        orderByClause = "ORDER BY Quantity";
                         break;
                     case "Prix Unitaire":
-                        requete += " ORDER BY UnitPrice";
+                        orderByClause = "ORDER BY CAST(REPLACE(UnitPrice, ',', '.') AS DECIMAL(10, 2))";
                         break;
                     case "Réduction":
-                        requete += " ORDER BY Discount";
+                        orderByClause = "ORDER BY CAST(REPLACE(Discount, ',', '.') AS DECIMAL(10, 2))";
                         break;
                 }
             }
-            ResultSet rs = stmt.executeQuery(requete);
+            String query = "SELECT ProductID, Quantity, UnitPrice, Discount FROM OrderDetails WHERE OrderID=? " + orderByClause;
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, orderId);
+            ResultSet rs = stmt.executeQuery();
 
             // Itération sur les résultats de la requête et création d'un objet OrderDetail pour chaque client
             while (rs.next()) {
                 OrderDetails orderDetails = new OrderDetails(rs.getString("ProductID"), rs.getString("Quantity"), rs.getString("UnitPrice"), rs.getString("Discount"));
                 orderDetailsList.add(orderDetails);
             }
-            rs.close();
-            stmt.close();
-            conn.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         return orderDetailsList.toArray(OrderDetails[]::new);
     }
- // Product fix
+
+    // Product fix
     public Product getProduct(String productId) {
         String url = "jdbc:h2:./h2database";
         Product product = new Product("null","null","null","null","null");
