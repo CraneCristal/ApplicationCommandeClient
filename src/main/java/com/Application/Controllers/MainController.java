@@ -27,9 +27,10 @@ public class MainController extends Controller{
 
         // Creation de la liste des information des commandes du client à afficher
         Order[] ordersCustomer = this.model.getCustomerOrders(customers[customerPos].id);
+        Customer concernedCustomer = this.model.getCustomer(ordersCustomer[0].customer_id);
         String[][] stringsOrdersCustomer = new String[ordersCustomer.length][];
         for(int i = 0; i<ordersCustomer.length; i++) {
-            stringsOrdersCustomer[i] = new String[]{ordersCustomer[i].id, ordersCustomer[i].date, ordersCustomer[i].customer_id, ordersCustomer[i].fullPrice};
+            stringsOrdersCustomer[i] = new String[]{ordersCustomer[i].id, ordersCustomer[i].date, concernedCustomer.first_name + " " + concernedCustomer.last_name, ordersCustomer[i].fullPrice};
         }
 
         MainViewModel viewModel = new MainViewModel(customersId, stringsOrdersCustomer);

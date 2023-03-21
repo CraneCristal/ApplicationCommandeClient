@@ -38,8 +38,8 @@ public class MainView extends View {
         }
         this.update();
         //Redimension automatique des colonnes
-        for (int i = 0; i < ordersTable.getColumnCount(); i++) {
-            this.ordersTable.getColumn(i).pack();
+        for(TableColumn column : this.ordersTable.getColumns()) {
+            column.pack();
         }
         this.ordersTable.setBounds(25, 70, 725, 400);
 
@@ -109,6 +109,9 @@ public class MainView extends View {
                     item = new TableItem(this.ordersTable, SWT.NONE);
                 }
                 item.setText(lines[i]);
+            }
+            for(TableColumn column : this.ordersTable.getColumns()) {
+                column.pack();
             }
         }
 
